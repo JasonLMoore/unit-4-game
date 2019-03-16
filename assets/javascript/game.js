@@ -15,9 +15,11 @@ var makeTarget = function() {
     console.log(targetArray);
     var randomNumber = targetArray[Math.floor(Math.random() * targetArray.length)];
     console.log(randomNumber);
+    return randomNumber;
 };
+$('#random-number').text(makeTarget());
 
-console.log(makeTarget());
+
+
     
     
-
