@@ -1,6 +1,8 @@
 var totalScore = 0;
 var totalWins = 0;
 var totalLosses = 0;
+var crystalValue = 0;
+var crystalNumArr = [];
 
 
 
@@ -18,7 +20,6 @@ var makeTarget = function() {
 };
 
 var setCrystalNumber = function () {
-    var crystalValue;
     var crystalMin = 1;
     var crystalMax = 12;
     var crystalArr = [];
@@ -26,19 +27,36 @@ var setCrystalNumber = function () {
         crystalArr.push(q);
     };
     //console.log (crystalArr);
-    var randomCrystalNum = crystalArr[Math.floor(Math.random() * crystalArr.length)];
     //console.log(randomCrystalNum);
-    crystalValue = randomCrystalNum;
-    //console.log (crystalValue);
-    return crystalValue;
+    for (k = 0; k < 4; k++) {
+        var randomCrystalNum = crystalArr[Math.floor(Math.random() * crystalArr.length)];
+        crystalNumArr.push(randomCrystalNum)
+    };
+    //console.log (crystalNumArr);
+    return crystalNumArr;
 };
+
+
+
 
 
 $(document).ready(function() {
     $('#random-number').text(makeTarget());
+    $('#total-score').text(totalScore);
+    setCrystalNumber();
     $('#crystal-1').click(function() {
-        console.log(setCrystalNumber());
+        console.log(crystalNumArr[0]);
     });
+    $('#crystal-2').click(function() {
+        console.log(crystalNumArr[1]);
+    });
+    $('#crystal-3').click(function() {
+        console.log(crystalNumArr[2]);
+    });
+    $('#crystal-4').click(function() {
+        console.log(crystalNumArr[3]);
+    });
+
 });
 
 
