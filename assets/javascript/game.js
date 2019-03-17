@@ -19,7 +19,8 @@ var makeTarget = function() {
     return randomNumber;
 };
 
-var setCrystalNumber = function () {
+
+var randomizeNumber = function () {
     var crystalMin = 1;
     var crystalMax = 12;
     var crystalArr = [];
@@ -36,6 +37,12 @@ var setCrystalNumber = function () {
     return crystalNumArr;
 };
 
+var setCrystalNumber = function () {
+    $("#crystal-1").attr("data-crystalvalue", crystalNumArr[0]);
+    $("#crystal-2").attr("data-crystalvalue", crystalNumArr[1]);
+    $("#crystal-3").attr("data-crystalvalue", crystalNumArr[2]);
+    $("#crystal-4").attr("data-crystalvalue", crystalNumArr[3]);
+};
 
 
 
@@ -43,20 +50,8 @@ var setCrystalNumber = function () {
 $(document).ready(function() {
     $('#random-number').text(makeTarget());
     $('#total-score').text(totalScore);
+    randomizeNumber();
     setCrystalNumber();
-    $('#crystal-1').click(function() {
-        console.log(crystalNumArr[0]);
-    });
-    $('#crystal-2').click(function() {
-        console.log(crystalNumArr[1]);
-    });
-    $('#crystal-3').click(function() {
-        console.log(crystalNumArr[2]);
-    });
-    $('#crystal-4').click(function() {
-        console.log(crystalNumArr[3]);
-    });
-
 });
 
 
