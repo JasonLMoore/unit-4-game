@@ -3,6 +3,14 @@ var totalWins = 0;
 var totalLosses = 0;
 var crystalNumArr = [];
 
+var reset = function () {
+    makeTarget();
+    randomizeNumber();
+    setCrystalNumber();
+    totalScore = 0
+}
+
+
 
 
 var makeTarget = function() {
@@ -12,7 +20,7 @@ var makeTarget = function() {
     for (var i = targetMin; i < targetMax+1; i++) {
         targetArray.push(i);
     };
-    console.log(targetArray);
+    //console.log(targetArray);
     var randomNumber = targetArray[Math.floor(Math.random() * targetArray.length)];
     console.log(randomNumber);
     return randomNumber;
@@ -43,35 +51,38 @@ var setCrystalNumber = function () {
     $("#crystal-4").attr("data-crystalvalue", crystalNumArr[3]);
 };
 
+var targetNumber = makeTarget();
+$("#random-number").text(targetNumber);
+
 $(".crystalImg").on("click", function() {
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
     totalScore += crystalValue;
+    
     if (totalScore === targetNumber) {
         totalWins++;
-
-    } else if (counter >= targetNumber) {
+        reset();
+        
+    } else if (totalScore >= targetNumber) {
         totalLosses++;
-    }
+        reset();
+    };
+    $("#total-score").text(totalScore);
+    $("#wins").text(totalWins);
+    $("#losses").text(totalLosses);
 });
 
 if (totalWins === 10) {
     alert("You Win!");
-    reset();
 } else if (totalLosses === 10) {
     alert("Sorry. You Lose!");
-    reset();
 }
 
 
 
 
-$(document).ready(function() {
-    $('#random-number').text(makeTarget());
-    $('#total-score').text(totalScore);
-    randomizeNumber();
-    setCrystalNumber();
-});
+
+$(document).ready(function() {});
 
 
 
