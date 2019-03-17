@@ -1,7 +1,6 @@
 var totalScore = 0;
 var totalWins = 0;
 var totalLosses = 0;
-var crystalValue = 0;
 var crystalNumArr = [];
 
 
@@ -43,6 +42,26 @@ var setCrystalNumber = function () {
     $("#crystal-3").attr("data-crystalvalue", crystalNumArr[2]);
     $("#crystal-4").attr("data-crystalvalue", crystalNumArr[3]);
 };
+
+$(".crystalImg").on("click", function() {
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    totalScore += crystalValue;
+    if (totalScore === targetNumber) {
+        totalWins++;
+
+    } else if (counter >= targetNumber) {
+        totalLosses++;
+    }
+});
+
+if (totalWins === 10) {
+    alert("You Win!");
+    reset();
+} else if (totalLosses === 10) {
+    alert("Sorry. You Lose!");
+    reset();
+}
 
 
 
