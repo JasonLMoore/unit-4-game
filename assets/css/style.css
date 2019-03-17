@@ -1,0 +1,25 @@
+body {
+    color: powderblue;
+    background-color: royalblue;
+}
+.container {
+    background-color: black;
+    text-align: center;
+    
+}
+img {
+    width: 140px;
+    height: 140px;
+    padding: 5px;
+    visibility: visible;
+}
+
+.crystalImg {
+    width: 150px;
+    height: 150px;
+    align-content: center;
+    visibility: hidden;
+}
+
+
+
